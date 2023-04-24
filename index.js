@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
-import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
+import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
 
 const appSettings = {
     databaseURL:"https://playground-firebase-914-default-rtdb.firebaseio.com/"
@@ -25,6 +25,12 @@ addButtonEl.addEventListener('click', function () {
 
     console.log('${inputValue} added to database')
 })
+
+onValue(shoppingListInDB, function(snapshot) {
+    let itemsArray = Object.values(snapshot.val())
+    console.log(itemsArray)
+})
+
 
 function clearInputFieldEl() {
     inputFieldEl.value = ""
