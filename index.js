@@ -28,7 +28,11 @@ addButtonEl.addEventListener('click', function () {
 
 onValue(shoppingListInDB, function(snapshot) {
     let itemsArray = Object.values(snapshot.val())
-    console.log(itemsArray)
+    // For loop to iterate on itemsArray and console log each item
+    for (let i = 0; i < itemsArray.length; i++) {
+        appendItemToShoppingListEl (itemsArray[i]) //display array items on screen
+        
+    }
 })
 
 
